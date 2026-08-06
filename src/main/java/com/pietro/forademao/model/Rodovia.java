@@ -22,12 +22,12 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "rodovias")
+@Table(name = "rodovia")
 public class Rodovia {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idRodovia;
 
     private double km;
     private String nome;
@@ -37,4 +37,8 @@ public class Rodovia {
     @JsonManagedReference
     @OneToMany(mappedBy = "idRodovia", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Acidente> idAcidente = new ArrayList<>();
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "idRodovia", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Pontos_perigosos> idPontosPerigosos = new ArrayList<>();
 }
