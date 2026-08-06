@@ -25,12 +25,12 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "acidentes")
+@Table(name = "acidente")
 public class Acidente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idAcidente;
 
     @Enumerated(EnumType.STRING)
     private GravidadeEnum gravidadeEnum;
@@ -48,7 +48,7 @@ public class Acidente {
     
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idAcidente", nullable = false)
+    @JoinColumn(name = "idRodovia", nullable = false)
     private Rodovia idRodovia;
 
     private int total_acidentes;
