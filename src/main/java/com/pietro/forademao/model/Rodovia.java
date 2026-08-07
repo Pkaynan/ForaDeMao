@@ -2,7 +2,6 @@ package com.pietro.forademao.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -27,9 +26,10 @@ public class Rodovia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idrodovia")
     private Long idRodovia;
 
-    private double km;
+    private int km;
     private String nome;
     private String tipo;
     private String estado;

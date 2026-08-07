@@ -14,6 +14,7 @@ public class Cidade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idcidade")
     private Long idCidade;
 
     private String estado;

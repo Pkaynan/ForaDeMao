@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Entity
 @Getter
 @NoArgsConstructor
@@ -16,14 +18,18 @@ public class Pontos_perigosos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idpontos_perigosos")
     private Long idpontos_perigosos;
 
-    private float latitude;
-    private float longitude;
-    private Nivel_risco nivel_risco;
+    private BigDecimal latitude;
+    private BigDecimal longitude;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "nivel_risco")
+    private Nivel_risco nivel_riscoENUM;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idRodovia", nullable = false)
+    @JoinColumn(name = "idrodovia", nullable = false)
     private Rodovia idRodovia;
 }
