@@ -34,4 +34,8 @@ public class Rodovia {
     @JsonManagedReference
     @OneToMany(mappedBy = "rodovia", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true) // TODO VERIFICAR O CASCADE
     private List<Pontos_perigosos> idPontosPerigosos = new ArrayList<>();
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "rodovia", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)//TODO VERIFICAR O CASCADE
+    private List<Conexao_rodovia> conexaoRodovias = new ArrayList<>();
 }
