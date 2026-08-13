@@ -41,7 +41,7 @@ public class Acidente {
     private int ilesos;
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idrodovia", nullable = false)
     private Rodovia rodovia;
 

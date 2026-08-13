@@ -19,7 +19,7 @@ public class Clima {
     private Long idclima;
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idacidente", nullable = false)
     private Acidente acidente;
 
