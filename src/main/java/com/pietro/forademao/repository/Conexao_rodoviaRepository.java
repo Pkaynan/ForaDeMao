@@ -1,11 +1,9 @@
 package com.pietro.forademao.repository;
 
-import com.pietro.forademao.model.Acidente;
+import com.pietro.forademao.model.Conexao_rodovia;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.UUID;
-
 @Repository
-public interface AcidenteRepository extends JpaRepository<Acidente, Long> {
+public interface Conexao_rodoviaRepository extends JpaRepository<Conexao_rodovia, Long> {
 }

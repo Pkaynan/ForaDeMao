@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface RodoviaRespository extends JpaRepository<Rodovia, UUID> {
+public interface RodoviaRespository extends JpaRepository<Rodovia, Long> {
 }
