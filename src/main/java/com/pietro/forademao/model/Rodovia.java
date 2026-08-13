@@ -5,14 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,10 +28,10 @@ public class Rodovia {
     private String estado;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "idRodovia", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "rodovia", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true) // TODO VERIFICAR O CASCADE
     private List<Acidente> idAcidente = new ArrayList<>();
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "idRodovia", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "rodovia", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true) // TODO VERIFICAR O CASCADE
     private List<Pontos_perigosos> idPontosPerigosos = new ArrayList<>();
 }

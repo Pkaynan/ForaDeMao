@@ -17,5 +17,6 @@ public class Cidade {
     @Column(name = "idcidade")
     private Long idCidade;
 
+    private String nome;
     private String estado;
 }

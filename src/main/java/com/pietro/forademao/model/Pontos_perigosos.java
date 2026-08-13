@@ -29,7 +29,7 @@ public class Pontos_perigosos {
     private Nivel_risco nivel_riscoENUM;
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idrodovia", nullable = false)
-    private Rodovia idRodovia;
+    private Rodovia rodovia;
 }

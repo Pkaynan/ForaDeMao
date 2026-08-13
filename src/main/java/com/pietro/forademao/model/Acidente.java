@@ -2,8 +2,11 @@ package com.pietro.forademao.model;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.pietro.forademao.model.Enum.GravidadeEnum;
 import com.pietro.forademao.model.Enum.TipoAcidenteEnum;
 
@@ -37,13 +40,15 @@ public class Acidente {
     private int feridos;
     private int ilesos;
 
-    // TODO idclima
-    
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idrodovia", nullable = false)
-    private Rodovia idRodovia;
+    private Rodovia rodovia;
 
     private int total_acidentes;
     private Instant data_hora;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "acidente", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true) // TODO VERIFICAR O CASCADE
+    private List<Clima> climaList = new ArrayList<>();
 }
