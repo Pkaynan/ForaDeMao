@@ -32,7 +32,8 @@ public class Acidente {
     private GravidadeEnum gravidadeEnum;
 
     @Enumerated(EnumType.STRING)
-    private TipoAcidenteEnum tipo;
+    @Column(name = "tipo")
+    private TipoAcidenteEnum tipoAcidenteEnum;
 
     private BigDecimal latitude;
     private BigDecimal longitude;

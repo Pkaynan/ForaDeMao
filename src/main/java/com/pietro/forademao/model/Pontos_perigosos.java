@@ -1,7 +1,7 @@
 package com.pietro.forademao.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.pietro.forademao.model.Enum.Nivel_risco;
+import com.pietro.forademao.model.Enum.Nivel_riscoEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,7 +26,7 @@ public class Pontos_perigosos {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "nivel_risco")
-    private Nivel_risco nivel_riscoENUM;
+    private Nivel_riscoEnum nivel_riscoEnum;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
