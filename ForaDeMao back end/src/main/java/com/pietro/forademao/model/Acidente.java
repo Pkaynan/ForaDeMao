@@ -46,7 +46,6 @@ public class Acidente {
     @JoinColumn(name = "idrodovia", nullable = false)
     private Rodovia rodovia;
 
-    private int total_acidentes;
     private Instant data_hora;
 
     @JsonManagedReference

@@ -1,4 +1,4 @@
-package com.pietro.forademao.service;
+package com.pietro.forademao.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -19,10 +19,7 @@ public class MapaService {
     private final RodoviaRepository rodoviaRepository;
     private final PontosPerigososRepository pontosPerigososRepository;
 
-    public MapaService(
-            AcidenteRepository acidenteRepository,
-            RodoviaRepository rodoviaRepository,
-            PontosPerigososRepository pontosPerigososRepository) {
+    public MapaService(AcidenteRepository acidenteRepository, RodoviaRepository rodoviaRepository, PontosPerigososRepository pontosPerigososRepository) {
         this.acidenteRepository = acidenteRepository;
         this.rodoviaRepository = rodoviaRepository;
         this.pontosPerigososRepository = pontosPerigososRepository;

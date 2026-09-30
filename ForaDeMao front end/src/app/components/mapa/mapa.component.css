@@ -1,0 +1,47 @@
+.app { display: flex; height: 100vh; width: 100vw; }
+
+.sidebar {
+  width: 300px; min-width: 300px; background: var(--asfalto-1);
+  border-right: 1px solid var(--linha); display: flex; flex-direction: column;
+  overflow-y: auto;
+}
+.sidebar-header { padding: 20px 18px 14px; border-bottom: 1px solid var(--linha); }
+.tag {
+  display: inline-block; background: var(--amarelo); color: #241c02; font-weight: 700;
+  font-size: 11px; padding: 2px 8px; border-radius: 3px; margin-bottom: 8px;
+}
+.sidebar-header h1 { font-size: 21px; margin: 0; }
+.sidebar-header p { font-size: 12.5px; color: var(--texto-fraco); margin: 6px 0 0; line-height: 1.5; }
+
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--linha); border-bottom: 1px solid var(--linha); }
+.stat { background: var(--asfalto-1); padding: 14px 16px; }
+.stat .n { font-size: 26px; font-weight: 600; color: var(--amarelo); line-height: 1; }
+.stat .l { font-size: 11.5px; color: var(--texto-fraco); margin-top: 4px; }
+
+.section { padding: 16px 18px; border-bottom: 1px solid var(--linha); }
+.section h2 { font-size: 13px; color: var(--texto-fraco); font-weight: 500; margin: 0 0 10px; }
+.check-row { display: flex; align-items: center; gap: 9px; padding: 6px 0; font-size: 13.5px; cursor: pointer; }
+.check-row input { accent-color: var(--amarelo); width: 15px; height: 15px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.line { width: 16px; height: 3px; border-radius: 2px; flex: none; }
+
+select {
+  width: 100%; background: var(--asfalto-2); color: var(--texto); border: 1px solid var(--linha-forte);
+  border-radius: 6px; padding: 8px 10px; font-size: 13px;
+}
+
+.detail { padding: 16px 18px; flex: 1; }
+.empty { font-size: 13px; color: var(--texto-fraco); line-height: 1.6; }
+.card { background: var(--asfalto-2); border: 1px solid var(--linha-forte); border-radius: 8px; padding: 14px; }
+.card h3 { font-size: 15px; margin: 0 0 6px; }
+.card .row { display: flex; justify-content: space-between; font-size: 12.5px; padding: 4px 0; border-top: 1px solid var(--linha); }
+.card .row span:first-child { color: var(--texto-fraco); }
+
+.erro { font-size: 12px; color: var(--vermelho); padding: 10px 18px; }
+
+.mapa { flex: 1; height: 100%; background: var(--asfalto-0); }
+
+@media (max-width: 720px) {
+  .app { flex-direction: column; }
+  .sidebar { width: 100%; min-width: 0; max-height: 40%; }
+}

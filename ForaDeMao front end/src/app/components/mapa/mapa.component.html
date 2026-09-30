@@ -1,0 +1,66 @@
+<div class="app">
+  <aside class="sidebar">
+    <header class="sidebar-header">
+      <span class="tag">TCC · Fora de Mão</span>
+      <h1>Mapa de sinistros</h1>
+      <p>Acidentes, pontos de risco e trechos das rodovias federais.</p>
+    </header>
+
+    <div class="stats">
+      <div class="stat"><div class="n">{{ acidentes.length }}</div><div class="l">Acidentes</div></div>
+      <div class="stat"><div class="n">{{ pontosPerigosos.length }}</div><div class="l">Pontos de risco</div></div>
+      <div class="stat"><div class="n">{{ rodovias.length }}</div><div class="l">Rodovias</div></div>
+      <div class="stat"><div class="n">{{ totalMortes() }}</div><div class="l">Mortes</div></div>
+    </div>
+
+    <section class="section">
+      <h2>Camadas</h2>
+      <label class="check-row">
+        <input type="checkbox" [(ngModel)]="mostrarAcidentes" (change)="onToggleAcidentes()">
+        <span class="dot" style="background:#e33d3d"></span> Acidentes
+      </label>
+      <label class="check-row">
+        <input type="checkbox" [(ngModel)]="mostrarPerigosos" (change)="onTogglePerigosos()">
+        <span class="dot" style="background:#e8823a"></span> Pontos perigosos
+      </label>
+      <label class="check-row">
+        <input type="checkbox" [(ngModel)]="mostrarRodovias" (change)="onToggleRodovias()">
+        <span class="line" style="background:#f2b705"></span> Rodovias
+      </label>
+    </section>
+
+    <section class="section">
+      <h2>Filtrar por gravidade</h2>
+      <select [(ngModel)]="filtroGravidade" (change)="onFiltroGravidadeChange()">
+        <option value="TODAS">Todas</option>
+        <option value="FATAL">Fatal</option>
+        <option value="GRAVE">Grave</option>
+        <option value="LEVE">Leve</option>
+      </select>
+    </section>
+
+    <section class="detail">
+      <p *ngIf="!itemSelecionado" class="empty">
+        Clique em um marcador ou em uma rodovia no mapa para ver os detalhes aqui.
+      </p>
+
+      <div *ngIf="itemSelecionado && ehAcidente(itemSelecionado)" class="card">
+        <h3>{{ itemSelecionado.tipo }}</h3>
+        <div class="row"><span>Gravidade</span><span>{{ itemSelecionado.gravidade }}</span></div>
+        <div class="row"><span>Rodovia</span><span>{{ itemSelecionado.nomeRodovia }}</span></div>
+        <div class="row"><span>Fatais</span><span>{{ itemSelecionado.fatais }}</span></div>
+        <div class="row"><span>Feridos</span><span>{{ itemSelecionado.feridos }}</span></div>
+      </div>
+
+      <div *ngIf="itemSelecionado && !ehAcidente(itemSelecionado)" class="card">
+        <h3>{{ itemSelecionado.nome }}</h3>
+        <div class="row"><span>Estado</span><span>{{ itemSelecionado.estado }}</span></div>
+        <div class="row"><span>Pontos no traçado</span><span>{{ itemSelecionado.tracado.length }}</span></div>
+      </div>
+    </section>
+
+    <p *ngIf="erro" class="erro">{{ erro }}</p>
+  </aside>
+
+  <div id="mapa" class="mapa"></div>
+</div>
