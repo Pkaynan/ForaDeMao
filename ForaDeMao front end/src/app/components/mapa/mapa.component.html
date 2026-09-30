@@ -51,6 +51,10 @@
         <div class="row"><span>Fatais</span><span>{{ itemSelecionado.fatais }}</span></div>
         <div class="row"><span>Feridos</span><span>{{ itemSelecionado.feridos }}</span></div>
         <div class="row"><span>Clima</span><span>{{ itemSelecionado.clima }}</span></div>
+        <div class="row">
+          <span>Data e Hora</span>
+          <span>{{ itemSelecionado.dataHora | date:"dd/MM/yyyy HH:mm":"America/Sao_Paulo"}}</span>
+        </div>
       </div>
 
       <div *ngIf="itemSelecionado && !ehAcidente(itemSelecionado)" class="card">
