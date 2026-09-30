@@ -31,7 +31,7 @@ public class Conexao_rodovia {
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idrodovia", nullable = false)
-    private Rodovia idrodovia;
+    private Rodovia rodovia;
 
     @Column(name = "distancia_km")
     private int distancia;

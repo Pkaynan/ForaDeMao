@@ -7,8 +7,8 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.pietro.forademao.model.Enum.GravidadeEnum;
-import com.pietro.forademao.model.Enum.TipoAcidenteEnum;
+import com.pietro.forademao.Enum.GravidadeEnum;
+import com.pietro.forademao.Enum.TipoAcidenteEnum;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

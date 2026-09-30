@@ -1,4 +1,4 @@
-package com.pietro.forademao.model.Enum;
+package com.pietro.forademao.Enum;
 
 public enum Nivel_riscoEnum {
     GRANDE,

@@ -28,18 +28,22 @@ public class Rodovia {
     private String estado;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "rodovia", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true) // TODO VERIFICAR O CASCADE
-    private List<Acidente> idAcidente = new ArrayList<>();
+    @OneToMany(mappedBy = "rodovia", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Acidente> acidentes = new ArrayList<>();
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "rodovia", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true) // TODO VERIFICAR O CASCADE
-    private List<Pontos_perigosos> idPontosPerigosos = new ArrayList<>();
+    @OneToMany(mappedBy = "rodovia", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Pontos_perigosos> pontosPerigosos = new ArrayList<>();
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "rodovia", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)//TODO VERIFICAR O CASCADE
+    @OneToMany(mappedBy = "rodovia", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Conexao_rodovia> conexaoRodovias = new ArrayList<>();
 
     @JsonManagedReference
     @OneToMany(mappedBy = "rodovia", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Fluxo_rodovia> fluxoRodovias = new ArrayList<>();
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "rodovia", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RodoviaPonto> pontosTracado = new ArrayList<>();
 }

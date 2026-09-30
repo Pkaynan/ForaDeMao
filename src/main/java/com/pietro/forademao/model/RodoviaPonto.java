@@ -1,32 +1,37 @@
 package com.pietro.forademao.model;
 
+import java.math.BigDecimal;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.pietro.forademao.Enum.Nivel_riscoEnum;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
+/**
+ * Um ponto (vértice) do traçado geográfico de uma rodovia.
+ * A lista ordenada de pontos de uma Rodovia forma a linha (LineString)
+ * que é desenhada no mapa (Leaflet Polyline / GeoJSON LineString).
+ */
 @Entity
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "pontos_perigosos")
-public class Pontos_perigosos {
+@Table(name = "rodovia_ponto")
+public class RodoviaPonto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idpontos_perigosos")
-    private Long idpontos_perigosos;
+    @Column(name = "idrodovia_ponto")
+    private Long idRodoviaPonto;
 
     private BigDecimal latitude;
     private BigDecimal longitude;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "nivel_risco")
-    private Nivel_riscoEnum nivel_riscoEnum;
+    /** Define a ordem do ponto dentro do traçado da rodovia (0, 1, 2, ...). */
+    @Column(name = "ordem")
+    private int ordem;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
