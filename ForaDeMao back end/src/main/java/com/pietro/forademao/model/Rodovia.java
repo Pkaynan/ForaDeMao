@@ -1,0 +1,49 @@
+package com.pietro.forademao.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "rodovia")
+public class Rodovia {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idrodovia")
+    private Long idRodovia;
+
+    private int km;
+    private String nome;
+    private String tipo;
+    private String estado;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "rodovia", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Acidente> acidentes = new ArrayList<>();
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "rodovia", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Pontos_perigosos> pontosPerigosos = new ArrayList<>();
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "rodovia", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Conexao_rodovia> conexaoRodovias = new ArrayList<>();
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "rodovia", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Fluxo_rodovia> fluxoRodovias = new ArrayList<>();
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "rodovia", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RodoviaPonto> pontosTracado = new ArrayList<>();
+}

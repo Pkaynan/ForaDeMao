@@ -35,3 +35,36 @@ out/
 
 ### VS Code ###
 .vscode/
+
+
+# Dependencies
+node_modules/
+
+# Angular build
+dist/
+.angular/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Coverage
+coverage/
+
+# Temporary files
+tmp/
+temp/

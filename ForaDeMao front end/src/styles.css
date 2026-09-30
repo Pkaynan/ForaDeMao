@@ -1,0 +1,20 @@
+:root {
+  --asfalto-0: #111213;
+  --asfalto-1: #191a1c;
+  --asfalto-2: #212327;
+  --linha: #2c2f34;
+  --linha-forte: #3a3d43;
+  --texto: #eceae4;
+  --texto-fraco: #9a9a92;
+  --amarelo: #f2b705;
+  --vermelho: #e33d3d;
+  --laranja: #e8823a;
+}
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--asfalto-0);
+  color: var(--texto);
+}
