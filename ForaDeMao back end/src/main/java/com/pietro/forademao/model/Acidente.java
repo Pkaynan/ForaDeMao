@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.pietro.forademao.Enum.ClimaEnum;
 import com.pietro.forademao.Enum.GravidadeEnum;
 import com.pietro.forademao.Enum.TipoAcidenteEnum;
 
@@ -48,7 +49,7 @@ public class Acidente {
 
     private Instant data_hora;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "acidente", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true) // TODO VERIFICAR O CASCADE
-    private List<Clima> climaList = new ArrayList<>();
+    @Enumerated(EnumType.STRING)
+    @Column(name = "clima")
+    private ClimaEnum climaEnum;
 }

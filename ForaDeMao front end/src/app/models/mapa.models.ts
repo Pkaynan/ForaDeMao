@@ -5,6 +5,7 @@ export type Gravidade = 'LEVE' | 'GRAVE' | 'FATAL';
 export type TipoAcidente = 'COLISAO' | 'TOMBAMENTO' | 'ATROPELAMENTO';
 export type NivelRisco = 'GRANDE' | 'MODERADO' | 'BAIXO';
 
+
 export interface AcidenteMapaResponse {
   id: number;
   latitude: number;
@@ -17,6 +18,7 @@ export interface AcidenteMapaResponse {
   dataHora: string;
   idRodovia: number;
   nomeRodovia: string;
+  clima: string;
 }
 
 export interface CoordenadaResponse {

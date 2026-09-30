@@ -1,3 +1,5 @@
+drop database forademao;
+
 CREATE DATABASE IF NOT EXISTS forademao
   DEFAULT CHARACTER SET utf8mb4
   DEFAULT COLLATE utf8mb4_unicode_ci;
@@ -105,6 +107,7 @@ CREATE TABLE acidente (
     feridos     INT NOT NULL DEFAULT 0,
     ilesos      INT NOT NULL DEFAULT 0,
     data_hora   DATETIME NOT NULL,
+	clima		ENUM("ENSOLARADO", "CHUVA_LEVE", "CHUVA_MODERADA", "CHUVA_FORTE", "NEBLINA", "NUBLADO") NOT NULL, 
     CONSTRAINT fk_acidente_rodovia
         FOREIGN KEY (idrodovia) REFERENCES rodovia (idrodovia)
         ON DELETE CASCADE,
@@ -114,19 +117,6 @@ CREATE TABLE acidente (
     INDEX idx_acidente_rodovia (idrodovia),
     INDEX idx_acidente_gravidade (gravidade),
     INDEX idx_acidente_data (data_hora)
-) ENGINE=InnoDB;
-
--- ---------------------------------------------------------------------
--- CLIMA — condições climáticas associadas a um acidente
--- ---------------------------------------------------------------------
-CREATE TABLE clima (
-    idclima     BIGINT AUTO_INCREMENT PRIMARY KEY,
-    idacidente  BIGINT NOT NULL,
-    descricao   VARCHAR(120) NOT NULL,
-    CONSTRAINT fk_clima_acidente
-        FOREIGN KEY (idacidente) REFERENCES acidente (idacidente)
-        ON DELETE CASCADE,
-    INDEX idx_clima_acidente (idacidente)
 ) ENGINE=InnoDB;
 
 -- =====================================================================
@@ -151,15 +141,17 @@ INSERT INTO rodovia_ponto (idrodovia, latitude, longitude, ordem) VALUES
   (3, -20.750000, -48.250000, 2),
   (3, -20.470000, -48.280000, 3);
 
-INSERT INTO acidente (idrodovia, gravidade, tipo, latitude, longitude, fatais, feridos, ilesos, data_hora) VALUES
-  (1, 'GRAVE', 'COLISAO',      -23.550500, -46.633300, 0, 3, 1, '2026-08-10 14:20:00'),
-  (1, 'FATAL', 'TOMBAMENTO',   -23.562900, -46.654400, 1, 2, 0, '2026-07-22 02:05:00'),
-  (2, 'FATAL', 'ATROPELAMENTO',-22.908300, -43.196400, 1, 0, 0, '2026-06-14 19:40:00'),
-  (2, 'LEVE',  'COLISAO',      -22.830500, -43.320000, 0, 1, 2, '2026-09-01 09:10:00'),
-  (3, 'GRAVE', 'TOMBAMENTO',   -21.764200, -48.175500, 0, 2, 1, '2026-05-30 17:55:00'),
-  (3, 'FATAL', 'COLISAO',      -20.469700, -48.282200, 2, 1, 0, '2026-04-11 22:30:00');
+INSERT INTO acidente (idrodovia, gravidade, tipo, latitude, longitude, fatais, feridos, ilesos, data_hora, clima) VALUES
+  (1, 'GRAVE', 'COLISAO',      -23.550500, -46.633300, 0, 3, 1, '2026-08-10 14:20:00', "ENSOLARADO"),
+  (1, 'FATAL', 'TOMBAMENTO',   -23.562900, -46.654400, 1, 2, 0, '2026-07-22 02:05:00', "CHUVA_LEVE"),
+  (2, 'FATAL', 'ATROPELAMENTO',-22.908300, -43.196400, 1, 0, 0, '2026-06-14 19:40:00', "CHUVA_MODERADA"),
+  (2, 'LEVE',  'COLISAO',      -22.830500, -43.320000, 0, 1, 2, '2026-09-01 09:10:00', "CHUVA_FORTE"),
+  (3, 'GRAVE', 'TOMBAMENTO',   -21.764200, -48.175500, 0, 2, 1, '2026-05-30 17:55:00', "NEBLINA"),
+  (3, 'FATAL', 'COLISAO',      -20.469700, -48.282200, 2, 1, 0, '2026-04-11 22:30:00', "NUBLADO");
 
 INSERT INTO pontos_perigosos (idrodovia, latitude, longitude, nivel_risco) VALUES
   (1, -23.545000, -46.625000, 'GRANDE'),
   (2, -22.870000, -43.260000, 'MODERADO'),
   (3, -21.000000, -48.220000, 'GRANDE');
+  
+  select clima from acidente;

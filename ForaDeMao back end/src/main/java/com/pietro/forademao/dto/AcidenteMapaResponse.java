@@ -21,7 +21,8 @@ public record AcidenteMapaResponse(
         int ilesos,
         Instant dataHora,
         Long idRodovia,
-        String nomeRodovia) {
+        String nomeRodovia,
+        String clima) {
 
     public static AcidenteMapaResponse fromEntity(Acidente acidente) {
         return new AcidenteMapaResponse(
@@ -35,6 +36,8 @@ public record AcidenteMapaResponse(
                 acidente.getIlesos(),
                 acidente.getData_hora(),
                 acidente.getRodovia() != null ? acidente.getRodovia().getIdRodovia() : null,
-                acidente.getRodovia() != null ? acidente.getRodovia().getNome() : null);
+                acidente.getRodovia() != null ? acidente.getRodovia().getNome() : null,
+                acidente.getClimaEnum() != null ? acidente.getClimaEnum().name() : null
+        );
     }
 }
