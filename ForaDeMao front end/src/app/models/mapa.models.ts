@@ -32,6 +32,7 @@ export interface RodoviaMapaResponse {
   tipo: string;
   estado: string;
   tracado: CoordenadaResponse[];
+  km: number;
 }
 
 export interface PontoPerigosoMapaResponse {

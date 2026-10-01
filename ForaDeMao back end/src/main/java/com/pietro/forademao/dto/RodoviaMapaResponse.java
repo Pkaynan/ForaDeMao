@@ -10,7 +10,8 @@ public record RodoviaMapaResponse(
         String nome,
         String tipo,
         String estado,
-        List<CoordenadaResponse> tracado) {
+        List<CoordenadaResponse> tracado,
+        int km) {
 
     public static RodoviaMapaResponse fromEntity(Rodovia rodovia) {
         List<CoordenadaResponse> tracado = rodovia.getPontosTracado().stream()
@@ -23,6 +24,7 @@ public record RodoviaMapaResponse(
                 rodovia.getNome(),
                 rodovia.getTipo(),
                 rodovia.getEstado(),
-                tracado);
+                tracado,
+                rodovia.getKm());
     }
 }
