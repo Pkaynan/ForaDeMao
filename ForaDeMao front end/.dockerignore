@@ -1,0 +1,61 @@
+# ========================================
+# Git
+# ========================================
+.git
+.gitignore
+.gitattributes
+
+# ========================================
+# Spring Boot / Java
+# ========================================
+backend/target/
+backend/.mvn/
+*.class
+
+# Logs
+backend/*.log
+backend/logs/
+*.log
+
+# ========================================
+# Angular / Node
+# ========================================
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+
+# NPM
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# ========================================
+# IDEs
+# ========================================
+.idea/
+.vscode/
+*.iml
+
+# ========================================
+# Sistema operacional
+# ========================================
+.DS_Store
+Thumbs.db
+
+# ========================================
+# Variáveis de ambiente / segredos
+# ========================================
+.env
+.env.*
+!.env.example
+
+# ========================================
+# Testes / cobertura
+# ========================================
+frontend/coverage/
+backend/coverage/
+
+# ========================================
+# Documentação desnecessária para build
+# ========================================
+README.md
