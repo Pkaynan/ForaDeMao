@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import com.pietro.forademao.model.Rodovia;
+import com.pietro.forademao.model.RodoviaPonto;
 
 public record RodoviaMapaResponse(
         Long id,
@@ -15,7 +16,7 @@ public record RodoviaMapaResponse(
 
     public static RodoviaMapaResponse fromEntity(Rodovia rodovia) {
         List<CoordenadaResponse> tracado = rodovia.getPontosTracado().stream()
-                .sorted(Comparator.comparingInt(p -> p.getOrdem()))
+                .sorted(Comparator.comparingInt(RodoviaPonto::getOrdem))
                 .map(p -> new CoordenadaResponse(p.getLatitude(), p.getLongitude()))
                 .toList();
 
