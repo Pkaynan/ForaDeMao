@@ -1,13 +1,19 @@
+# instala uma versão fixa do node (a ideia é justamente ter um ambiente estático para evitar erros)
 FROM node:22.14.0-bookworm
 
+# escolhe o diretório app
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+# para container é necessário o package-LOCK
+COPY package.json package-lock.json ./ 
 
+# instala a versão limpa do node
 RUN npm ci
 
+# copia todo o código do angula (código que eu escrevi... pq senão não roda nada )
 COPY . .
 
 EXPOSE 4200
 
+# executa os comandos do node para iniciar o front end
 CMD ["npm", "start", "--", "--host", "0.0.0.0"]

@@ -1,0 +1,38 @@
+services:
+
+  frontend:
+    build:
+      context: "./ForaDeMao front end"
+      dockerfile: Containerfile
+    ports:
+      - "4200:4200"
+
+  backend:
+    build:
+      context: "./ForaDeMao back end"
+      dockerfile: Containerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+mysql:
+  image: mysql:latest
+
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: forademao
+
+  ports:
+    - "3306:3306"
+
+  volumes:
+    - mysql_data:/var/lib/mysql
+    - "./banco de dados/banco de dados.sql:/docker-entrypoint-initdb.d/banco.sql"
+
+  healthcheck:
+    test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-P", "3306", "-uroot", "-proot"]
+    interval: 5s
+    timeout: 5s
+    retries: 10

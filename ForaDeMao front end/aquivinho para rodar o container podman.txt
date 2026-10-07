@@ -1,11 +1,21 @@
 podman run --rm -it \
   -p 4200:4200 \
-  -v "$PWD:/app:Z" \
-  -v fora_de_mao_node_modules:/app/node_modules \
+  -v "$PWD:/app" \
+  -v /app/node_modules \
   fora-de-mao-frontend
+
+podman run --rm -it -p 4200:4200 
+
+Cria e executa. Para não executar basta remover flag -t 
+podman build -t ForaDeMao frontend . 
 
 docker run --rm -it \
   -p 4200:4200 \
   -v "$PWD:/app" \
-  -v fora_de_mao_node_modules:/app/node_modules \
+  -v /app/node_modules \
   fora-de-mao-frontend
+
+docker run --rm -it -p 4200:4200 
+
+Cria e executa. Para não executar basta remover flag -t 
+docker build -f Containerfile -t nome-da-sua-imagem .
